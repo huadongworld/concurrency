@@ -1,4 +1,4 @@
-package com.hd.concurrency.test;
+package com.hd.concurrency.example.count;
 
 import com.hd.concurrency.annotations.NotThreadSafe;
 import org.slf4j.Logger;
@@ -9,28 +9,26 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
+/**
+ * @author HuaDong
+ * @date 2019/9/15 10:33
+ */
 @NotThreadSafe
-public class ConcurrencyTest {
+public class CountExample1 {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ConcurrencyTest.class);
-
-    /**
-     * 请求总数
-     */
+    // 请求总数
     public static int clientTotal = 5000;
 
-    /**
-     * 同时并发执行的线程数
-     */
+    // 同时并发执行的线程数
     public static int threadTotal = 200;
 
     public static int count = 0;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CountExample1.class);
+
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        //信号量
         final Semaphore semaphore = new Semaphore(threadTotal);
-        //计数器闭锁
         final CountDownLatch countDownLatch = new CountDownLatch(clientTotal);
         for (int i = 0; i < clientTotal ; i++) {
             executorService.execute(() -> {
