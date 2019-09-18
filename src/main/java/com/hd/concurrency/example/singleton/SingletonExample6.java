@@ -34,9 +34,4 @@ public class SingletonExample6 {
     public static SingletonExample6 getInstance() {
         return instance;
     }
-
-    public static void main(String[] args) {
-        System.out.println(getInstance().hashCode());
-        System.out.println(getInstance().hashCode());
-    }
 }

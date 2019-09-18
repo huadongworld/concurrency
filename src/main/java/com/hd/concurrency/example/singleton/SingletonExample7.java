@@ -29,7 +29,7 @@ public class SingletonExample7 {
         /**
          * 实例
          */
-        INSTANCE,;
+        INSTANCE;
 
         private SingletonExample7 singleton;
 
